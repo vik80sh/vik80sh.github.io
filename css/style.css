@@ -77,11 +77,6 @@ button { font-family: inherit; cursor: pointer; }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-soft);
-  /* Forces its own compositor layer — without this, fixed + backdrop-filter
-     can fail to repaint on scroll in mobile Safari/WebKit, making the header vanish. */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 @media (max-width: 640px) {
@@ -533,8 +528,12 @@ body[data-view="fullstack"] .skill-card.secondary-emphasis .chip {
 
 @media (max-width: 860px) {
   .nav-links {
-    position: fixed;
-    top: 64px; left: 0; right: 0;
+    /* Anchored to .nav-wrap (which is itself position:fixed and already
+       establishes a containing block via backdrop-filter) instead of using
+       position:fixed here directly — nesting fixed-in-fixed-with-filter is
+       what caused this menu to mis-position against the header. */
+    position: absolute;
+    top: 100%; left: 0; right: 0;
     background: var(--bg-elevated);
     border-bottom: 1px solid var(--border);
     flex-direction: column;
