@@ -29,7 +29,6 @@
   var aboutText = document.getElementById("aboutText");
   var resumeRole = document.getElementById("resumeRole");
   var resumeSummary = document.getElementById("resumeSummary");
-  var resumeModeLabel = document.getElementById("resumeModeLabel");
 
   var CONTENT = {
     frontend: {
@@ -37,16 +36,14 @@
       heroSub: "8 years building fast, data-driven web applications with React, TypeScript & Next.js — from enterprise dashboards at Walmart to platform integrations at ServiceNow.",
       about: "I'm a Full-Stack Software Engineer with 8 years of experience architecting and building scalable web applications and enterprise platforms. My core strength is frontend engineering — React.js, JavaScript, TypeScript, Next.js, and Redux — paired with hands-on backend development in Java and Spring Boot for building REST APIs and integrating enterprise systems. I've delivered high-performance, data-driven applications across retail and enterprise environments, backed by a strong foundation in data structures, algorithms, and system design.",
       resumeRole: "Senior FrontEnd Software Engineer",
-      resumeSummary: "Senior FrontEnd Software Engineer with 8 years of experience building scalable web applications and enterprise platforms. Strong expertise in React.js, JavaScript, TypeScript, Next.js, and Redux, with practical experience in Java and Spring Boot. Experienced in developing high-performance, data-driven applications and REST APIs for enterprise environments.",
-      resumeModeLabel: "Frontend-focused"
+      resumeSummary: "Senior FrontEnd Software Engineer with 8 years of experience building scalable web applications and enterprise platforms. Strong expertise in React.js, JavaScript, TypeScript, Next.js, and Redux, with practical experience in Java and Spring Boot. Experienced in developing high-performance, data-driven applications and REST APIs for enterprise environments."
     },
     fullstack: {
       heroRole: "Full-Stack Software Engineer",
       heroSub: "8 years architecting scalable web applications and enterprise platforms — React & TypeScript on the frontend, Java & Spring Boot on the backend, shipped across retail and enterprise environments.",
       about: "I'm a Full-Stack Software Engineer with 8 years of experience architecting and building scalable web applications and enterprise platforms. I work across the stack: React.js, JavaScript, TypeScript, Next.js and Redux on the frontend; Java, Spring Boot and Node.js on the backend, building REST APIs and integrating enterprise systems end to end. I've delivered high-performance, data-driven applications across retail and enterprise environments, backed by a strong foundation in data structures, algorithms, and system design.",
       resumeRole: "Full-Stack Software Engineer",
-      resumeSummary: "Full-Stack Software Engineer with 8 years of experience architecting and building scalable web applications and enterprise platforms. Proven frontend expertise in React.js, JavaScript, TypeScript, Next.js, and Redux, paired with hands-on backend development in Java and Spring Boot — building REST APIs and integrating enterprise systems. Delivers high-performance, data-driven applications across retail and enterprise environments, backed by a strong foundation in data structures, algorithms, and system design.",
-      resumeModeLabel: "Full-Stack"
+      resumeSummary: "Full-Stack Software Engineer with 8 years of experience architecting and building scalable web applications and enterprise platforms. Proven frontend expertise in React.js, JavaScript, TypeScript, Next.js, and Redux, paired with hands-on backend development in Java and Spring Boot — building REST APIs and integrating enterprise systems. Delivers high-performance, data-driven applications across retail and enterprise environments, backed by a strong foundation in data structures, algorithms, and system design."
     }
   };
 
@@ -61,7 +58,6 @@
     aboutText.textContent = c.about;
     resumeRole.textContent = c.resumeRole;
     resumeSummary.textContent = c.resumeSummary;
-    resumeModeLabel.textContent = c.resumeModeLabel;
 
     document.title = "Vikash Gupta — " + c.heroRole;
   }
