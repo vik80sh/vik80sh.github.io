@@ -77,6 +77,21 @@ button { font-family: inherit; cursor: pointer; }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-soft);
+  /* Forces its own compositor layer — without this, fixed + backdrop-filter
+     can fail to repaint on scroll in mobile Safari/WebKit, making the header vanish. */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .nav-wrap {
+    /* backdrop-filter is the least reliable part of this on mobile WebKit;
+       fall back to a solid background so the header never renders blank. */
+    background: var(--bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 .nav {
   max-width: var(--max-width);
@@ -544,7 +559,7 @@ body[data-view="fullstack"] .skill-card.secondary-emphasis .chip {
 }
 
 @media print {
-  .nav-wrap, .hero, .scroll-cue, footer, #skills, #experience, #projects, #contact { display: none; }
+  .nav-wrap, .hero, .scroll-cue, footer, #skills, #experience, #projects, #writing, #contact { display: none; }
   #resume { padding: 0; }
   body { background: #fff; color: #000; }
   .resume-card { border: none; box-shadow: none; }
