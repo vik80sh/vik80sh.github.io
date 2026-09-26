@@ -5,7 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Vikash Gupta — Senior Frontend Software Engineer</title>
 <meta name="description" content="Vikash Gupta — Senior Frontend Software Engineer with 8 years building React, TypeScript, Next.js and Spring Boot applications." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128187;</text></svg>" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://vik80sh.github.io/" />
+<meta property="og:title" content="Vikash Gupta — Senior Frontend Software Engineer" />
+<meta property="og:description" content="8 years building React, TypeScript &amp; Next.js applications — from enterprise dashboards at Walmart to platform integrations at ServiceNow." />
+<meta property="og:image" content="https://vik80sh.github.io/assets/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Vikash Gupta — Senior Frontend Software Engineer" />
+<meta name="twitter:description" content="8 years building React, TypeScript &amp; Next.js applications." />
+<meta name="twitter:image" content="https://vik80sh.github.io/assets/og-image.png" />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%230a0e16%22/><text x=%2232%22 y=%2242%22 font-family=%22Arial,sans-serif%22 font-size=%2226%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%2322d3ee%22>VG</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,6 +25,8 @@
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <header class="nav-wrap" id="navWrap">
   <nav class="nav">
@@ -47,21 +60,41 @@
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <p class="eyebrow reveal">Hyderabad, India · Open to Bangalore &amp; Remote</p>
-      <h1 class="hero-title reveal">
-        Hi, I'm <span class="grad-text">Vikash Gupta</span>
-      </h1>
-      <h2 class="hero-role reveal" id="heroRole">Senior Frontend Software Engineer</h2>
-      <p class="hero-sub reveal" id="heroSub">
-        8 years building fast, data-driven web applications with React, TypeScript &amp; Next.js —
-        from enterprise dashboards at Walmart to platform integrations at ServiceNow.
-      </p>
-      <div class="hero-cta reveal">
-        <a href="#contact" class="btn btn-primary">Get in touch</a>
-        <a href="#resume" class="btn btn-ghost">View resume</a>
-        <a href="https://github.com/vik80sh" target="_blank" rel="noopener" class="btn btn-icon" aria-label="GitHub profile">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.94.57.1.79-.25.79-.55v-2.17c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.78 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.7.42.36.78 1.07.78 2.16v3.2c0 .3.22.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
-        </a>
+      <div class="hero-text">
+        <p class="status-pill reveal"><span class="status-dot"></span><span class="status-text">Currently building platform integrations at ServiceNow</span></p>
+        <p class="eyebrow reveal">Hyderabad, India · Open to Bangalore &amp; Remote</p>
+        <h1 class="hero-title reveal">
+          Hi, I'm <span class="grad-text">Vikash Gupta</span>
+        </h1>
+        <h2 class="hero-role reveal"><span id="heroRole">Senior Frontend Software Engineer</span><span class="type-cursor" aria-hidden="true"></span></h2>
+        <p class="hero-sub reveal" id="heroSub">
+          8 years building fast, data-driven web applications with React, TypeScript &amp; Next.js —
+          from enterprise dashboards at Walmart to platform integrations at ServiceNow.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="#resume" class="btn btn-ghost">View resume</a>
+          <a href="https://github.com/vik80sh" target="_blank" rel="noopener" class="btn btn-icon" aria-label="GitHub profile">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.94.57.1.79-.25.79-.55v-2.17c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.78 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.7.42.36.78 1.07.78 2.16v3.2c0 .3.22.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-code reveal" aria-hidden="true">
+        <div class="code-window">
+          <div class="code-window-head">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="code-filename">vikash.ts</span>
+          </div>
+          <pre class="code-body"><code><span class="code-kw">const</span> <span class="code-var">engineer</span> = {
+  <span class="code-key">name</span>: <span class="code-str">"Vikash Gupta"</span>,
+  <span class="code-key">role</span>: <span class="code-str">"Senior Frontend Engineer"</span>,
+  <span class="code-key">experience</span>: <span class="code-num">8</span>, <span class="code-comment">// years</span>
+  <span class="code-key">stack</span>: [<span class="code-str">"React"</span>, <span class="code-str">"TypeScript"</span>, <span class="code-str">"Next.js"</span>, <span class="code-str">"Spring Boot"</span>],
+  <span class="code-key">currentlyAt</span>: <span class="code-str">"ServiceNow"</span>,
+  <span class="code-key">openTo</span>: [<span class="code-str">"Bangalore"</span>, <span class="code-str">"Remote"</span>],
+};</code></pre>
+        </div>
       </div>
     </div>
     <a href="#about" class="scroll-cue" aria-label="Scroll to about section">
@@ -73,7 +106,7 @@
   <section class="section" id="about">
     <div class="container">
       <p class="section-tag reveal">About</p>
-      <h2 class="section-title reveal">A frontend engineer who ships the whole feature</h2>
+      <h2 class="section-title reveal">A full-stack engineer who leads with frontend craft</h2>
       <p class="about-text reveal" id="aboutText">
         I'm a Full-Stack Software Engineer with 8 years of experience architecting and building scalable
         web applications and enterprise platforms. My core strength is frontend engineering — React.js, JavaScript,
@@ -306,15 +339,6 @@
           <a href="https://github.com/vik80sh/Java_Spring_Boot_CRUD" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
         </article>
 
-        <article class="project-card reveal">
-          <div class="project-top">
-            <span class="project-lang">Vue.js</span>
-          </div>
-          <h3>Vue CRUD Operations</h3>
-          <p>Full CRUD operations implemented in Vue.js — component composition and reactive state without a framework like Vuex.</p>
-          <div class="chips small"><span class="chip">Vue.js</span><span class="chip">JavaScript</span></div>
-          <a href="https://github.com/vik80sh/CRUDOperation-Vue" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
-        </article>
 
       </div>
 

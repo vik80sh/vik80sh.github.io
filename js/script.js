@@ -35,8 +35,8 @@
       heroRole: "Senior Frontend Software Engineer",
       heroSub: "8 years building fast, data-driven web applications with React, TypeScript & Next.js — from enterprise dashboards at Walmart to platform integrations at ServiceNow.",
       about: "I'm a Full-Stack Software Engineer with 8 years of experience architecting and building scalable web applications and enterprise platforms. My core strength is frontend engineering — React.js, JavaScript, TypeScript, Next.js, and Redux — paired with hands-on backend development in Java and Spring Boot for building REST APIs and integrating enterprise systems. I've delivered high-performance, data-driven applications across retail and enterprise environments, backed by a strong foundation in data structures, algorithms, and system design.",
-      resumeRole: "Senior FrontEnd Software Engineer",
-      resumeSummary: "Senior FrontEnd Software Engineer with 8 years of experience building scalable web applications and enterprise platforms. Strong expertise in React.js, JavaScript, TypeScript, Next.js, and Redux, with practical experience in Java and Spring Boot. Experienced in developing high-performance, data-driven applications and REST APIs for enterprise environments."
+      resumeRole: "Senior Full-Stack Engineer — Frontend Heavy",
+      resumeSummary: "Full-Stack Software Engineer with 8 years of experience building scalable web applications and enterprise platforms, with a frontend-heavy focus on React.js, JavaScript, TypeScript, Next.js, and Redux — backed by hands-on backend development in Java and Spring Boot. Experienced in developing high-performance, data-driven applications and REST APIs for enterprise environments."
     },
     fullstack: {
       heroRole: "Full-Stack Software Engineer",
@@ -48,6 +48,7 @@
   };
 
   applyView(ACTIVE_VIEW);
+  runTypewriter();
 
   function applyView(view) {
     var c = CONTENT[view] || CONTENT.frontend;
@@ -60,6 +61,44 @@
     resumeSummary.textContent = c.resumeSummary;
 
     document.title = "Vikash Gupta — " + c.heroRole;
+  }
+
+  /* ---------- Hero role typewriter (one-time, skips if reduced motion) ---------- */
+  function runTypewriter() {
+    var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    var fullText = heroRole.textContent;
+    heroRole.textContent = "";
+    var i = 0;
+    var typer = setInterval(function () {
+      heroRole.textContent += fullText.charAt(i);
+      i++;
+      if (i >= fullText.length) clearInterval(typer);
+    }, 40);
+  }
+
+  /* ---------- Scroll progress bar ---------- */
+  var scrollProgress = document.getElementById("scrollProgress");
+  function updateScrollProgress() {
+    var scrollTop = window.scrollY || root.scrollTop;
+    var scrollable = root.scrollHeight - root.clientHeight;
+    var pct = scrollable > 0 ? (scrollTop / scrollable) * 100 : 0;
+    scrollProgress.style.width = pct + "%";
+  }
+  window.addEventListener("scroll", updateScrollProgress, { passive: true });
+  updateScrollProgress();
+
+  /* ---------- Cursor-spotlight on cards (desktop pointer devices only) ---------- */
+  var supportsHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (supportsHover) {
+    document.addEventListener("mousemove", function (e) {
+      var card = e.target.closest(".project-card, .skill-card, .contact-card");
+      if (!card) return;
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty("--x", ((e.clientX - rect.left) / rect.width) * 100 + "%");
+      card.style.setProperty("--y", ((e.clientY - rect.top) / rect.height) * 100 + "%");
+    });
   }
 
   /* ---------- Mobile menu ---------- */
