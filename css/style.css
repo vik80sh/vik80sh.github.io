@@ -388,6 +388,11 @@ body[data-view="fullstack"] .skill-card.secondary-emphasis .chip {
   margin-bottom: 8px;
   font-size: 0.95rem;
 }
+.tl-content li a {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+.tl-content li a:hover { text-decoration: underline; }
 .tl-content li::before {
   content: "";
   position: absolute; left: 0; top: 0.6em;
