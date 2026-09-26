@@ -528,22 +528,28 @@ body[data-view="fullstack"] .skill-card.secondary-emphasis .chip {
 
 @media (max-width: 860px) {
   .nav-links {
-    /* Anchored to .nav-wrap (which is itself position:fixed and already
-       establishes a containing block via backdrop-filter) instead of using
-       position:fixed here directly — nesting fixed-in-fixed-with-filter is
-       what caused this menu to mis-position against the header. */
+    /* max-height/overflow instead of a percentage transform: translateY(-110%)
+       moves the box by 110% of ITS OWN height, but since it starts at
+       top:100% (~64px down, not 0), that never fully clears a tall multi-item
+       list — the last item peeks back into view above the header. Collapsing
+       to 0 height can't overshoot regardless of how many links are in the list. */
     position: absolute;
     top: 100%; left: 0; right: 0;
     background: var(--bg-elevated);
     border-bottom: 1px solid var(--border);
     flex-direction: column;
-    padding: 20px 24px;
+    padding: 0 24px;
     gap: 16px;
-    transform: translateY(-110%);
-    transition: transform .3s ease;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
     margin-left: 0;
   }
-  .nav-links.open { transform: translateY(0); }
+  .nav-links.open {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 20px 24px;
+  }
   .menu-toggle { display: flex; }
 }
 
