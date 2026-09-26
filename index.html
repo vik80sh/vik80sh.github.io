@@ -66,7 +66,7 @@
         <h1 class="hero-title reveal">
           Hi, I'm <span class="grad-text">Vikash Gupta</span>
         </h1>
-        <h2 class="hero-role reveal"><span id="heroRole">Senior Frontend Software Engineer</span><span class="type-cursor" aria-hidden="true"></span></h2>
+        <h2 class="hero-role reveal"><span class="hero-role-icon" aria-hidden="true">&lt;/&gt;</span><span id="heroRole">Senior Frontend Software Engineer</span><span class="type-cursor" aria-hidden="true"></span></h2>
         <p class="hero-sub reveal" id="heroSub">
           8 years building fast, data-driven web applications with React, TypeScript &amp; Next.js —
           from enterprise dashboards at Walmart to platform integrations at ServiceNow.
@@ -80,20 +80,42 @@
         </div>
       </div>
 
-      <div class="hero-code reveal" aria-hidden="true">
+      <div class="hero-code reveal" id="heroCode" aria-hidden="true">
         <div class="code-window">
           <div class="code-window-head">
             <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span class="code-filename">vikash.ts</span>
+            <div class="code-tabs" role="tablist">
+              <button class="code-tab active" data-panel="ts" type="button">vikash.ts</button>
+              <button class="code-tab" data-panel="json" type="button">package.json</button>
+            </div>
+            <button class="code-copy" id="codeCopy" type="button" aria-label="Copy code" title="Copy">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+              <span class="code-copy-label">Copy</span>
+            </button>
           </div>
-          <pre class="code-body"><code><span class="code-kw">const</span> <span class="code-var">engineer</span> = {
-  <span class="code-key">name</span>: <span class="code-str">"Vikash Gupta"</span>,
-  <span class="code-key">role</span>: <span class="code-str">"Senior Frontend Engineer"</span>,
-  <span class="code-key">experience</span>: <span class="code-num">8</span>, <span class="code-comment">// years</span>
-  <span class="code-key">stack</span>: [<span class="code-str">"React"</span>, <span class="code-str">"TypeScript"</span>, <span class="code-str">"Next.js"</span>, <span class="code-str">"Spring Boot"</span>],
-  <span class="code-key">currentlyAt</span>: <span class="code-str">"ServiceNow"</span>,
-  <span class="code-key">openTo</span>: [<span class="code-str">"Bangalore"</span>, <span class="code-str">"Remote"</span>],
-};</code></pre>
+          <pre class="code-body" data-panel="ts"><code><span class="code-line"><span class="code-kw">const</span> <span class="code-var">engineer</span> = {</span>
+<span class="code-line">  <span class="code-key">name</span>: <span class="code-str">"Vikash Gupta"</span>,</span>
+<span class="code-line">  <span class="code-key">role</span>: <span class="code-str">"Senior Frontend Engineer"</span>,</span>
+<span class="code-line">  <span class="code-key">experience</span>: <span class="code-num">8</span>, <span class="code-comment">// years</span></span>
+<span class="code-line">  <span class="code-key">stack</span>: [<span class="code-str">"React"</span>, <span class="code-str">"TypeScript"</span>, <span class="code-str">"Next.js"</span>, <span class="code-str">"Spring Boot"</span>],</span>
+<span class="code-line">  <span class="code-key">currentlyAt</span>: <span class="code-str">"ServiceNow"</span>,</span>
+<span class="code-line">  <span class="code-key">openTo</span>: [<span class="code-str">"Bangalore"</span>, <span class="code-str">"Remote"</span>],</span>
+<span class="code-line">};</span></code></pre>
+          <pre class="code-body" data-panel="json" hidden><code><span class="code-line">{</span>
+<span class="code-line">  <span class="code-key">"name"</span>: <span class="code-str">"vikash-gupta"</span>,</span>
+<span class="code-line">  <span class="code-key">"version"</span>: <span class="code-str">"8.0.0"</span>,</span>
+<span class="code-line">  <span class="code-key">"license"</span>: <span class="code-str">"Open-to-Work"</span>,</span>
+<span class="code-line">  <span class="code-key">"dependencies"</span>: {</span>
+<span class="code-line">    <span class="code-key">"react"</span>: <span class="code-str">"^18.0.0"</span>,</span>
+<span class="code-line">    <span class="code-key">"typescript"</span>: <span class="code-str">"^5.0.0"</span>,</span>
+<span class="code-line">    <span class="code-key">"next"</span>: <span class="code-str">"^14.0.0"</span>,</span>
+<span class="code-line">    <span class="code-key">"spring-boot"</span>: <span class="code-str">"^3.0.0"</span></span>
+<span class="code-line">  },</span>
+<span class="code-line">  <span class="code-key">"devDependencies"</span>: {</span>
+<span class="code-line">    <span class="code-key">"problem-solving"</span>: <span class="code-str">"latest"</span>,</span>
+<span class="code-line">    <span class="code-key">"system-design"</span>: <span class="code-str">"latest"</span></span>
+<span class="code-line">  }</span>
+<span class="code-line">}</span></code></pre>
         </div>
       </div>
     </div>
@@ -125,8 +147,8 @@
           <span class="stat-label">Companies</span>
         </div>
         <div class="stat">
-          <span class="stat-num">40+</span>
-          <span class="stat-label">Public Repos</span>
+          <span class="stat-num" id="statRepos">40+</span>
+          <span class="stat-label">Public Repos <span class="live-badge" id="liveBadge" hidden>● live</span></span>
         </div>
         <div class="stat">
           <span class="stat-num">2%</span>
@@ -177,6 +199,16 @@
             <span class="chip">System Design</span>
             <span class="chip">Data Structures &amp; Algorithms</span>
             <span class="chip">Problem Solving</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <h3>AI Tools</h3>
+          <div class="chips">
+            <span class="chip">Claude (Anthropic)</span>
+            <span class="chip">GitHub Copilot</span>
+            <span class="chip">Devin</span>
+            <span class="chip">AI-Assisted Development</span>
           </div>
         </div>
       </div>
@@ -393,7 +425,8 @@
             <p class="resume-role" id="resumeRole">Senior FrontEnd Software Engineer</p>
           </div>
           <div class="resume-actions">
-            <a class="btn btn-primary btn-small" href="assets/resume/Vikash_8Y_EXP_FE.pdf" download>Download Resume (PDF)</a>
+            <a class="btn btn-primary btn-small" href="assets/resume/Vikash_8Y_EXP_FE.pdf" download>Download Frontend Resume</a>
+            <a class="btn btn-ghost btn-small" href="assets/resume/Vikash_Gupta_8Y_Exp_Full_Stack.pdf" download>Download Full-Stack Resume</a>
           </div>
         </div>
         <p class="resume-summary" id="resumeSummary">

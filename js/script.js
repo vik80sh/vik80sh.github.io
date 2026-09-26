@@ -101,6 +101,59 @@
     });
   }
 
+  /* ---------- Hero code window: tab switch + copy ---------- */
+  var codeWindow = document.querySelector(".code-window");
+  if (codeWindow) {
+    var codeTabs = codeWindow.querySelectorAll(".code-tab");
+    var codePanels = codeWindow.querySelectorAll(".code-body");
+
+    codeTabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var target = tab.getAttribute("data-panel");
+        codeTabs.forEach(function (t) { t.classList.toggle("active", t === tab); });
+        codePanels.forEach(function (p) { p.hidden = p.getAttribute("data-panel") !== target; });
+      });
+    });
+
+    var codeCopy = document.getElementById("codeCopy");
+    var codeCopyLabel = codeCopy ? codeCopy.querySelector(".code-copy-label") : null;
+    if (codeCopy) {
+      codeCopy.addEventListener("click", function () {
+        var activePanel = codeWindow.querySelector(".code-body:not([hidden])");
+        var text = activePanel ? activePanel.textContent : "";
+        copyToClipboard(text).then(function () {
+          codeCopy.classList.add("copied");
+          if (codeCopyLabel) codeCopyLabel.textContent = "Copied!";
+          setTimeout(function () {
+            codeCopy.classList.remove("copied");
+            if (codeCopyLabel) codeCopyLabel.textContent = "Copy";
+          }, 1800);
+        });
+      });
+    }
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function () { fallbackCopy(text); });
+    }
+    fallbackCopy(text);
+    return Promise.resolve();
+  }
+
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    } catch (e) { /* ignore */ }
+  }
+
   /* ---------- Mobile menu ---------- */
   var menuToggle = document.getElementById("menuToggle");
   var navLinks = document.getElementById("navLinks");
@@ -134,6 +187,21 @@
     revealEls.forEach(function (el) { observer.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("visible"); });
+  }
+
+  /* ---------- Live public repo count from GitHub API ---------- */
+  var statRepos = document.getElementById("statRepos");
+  var liveBadge = document.getElementById("liveBadge");
+  if (statRepos && window.fetch) {
+    fetch("https://api.github.com/users/vik80sh")
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        if (data && typeof data.public_repos === "number") {
+          statRepos.textContent = data.public_repos + "+";
+          if (liveBadge) liveBadge.hidden = false;
+        }
+      })
+      .catch(function () { /* keep static fallback number */ });
   }
 
   /* ---------- Footer year ---------- */
